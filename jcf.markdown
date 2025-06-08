@@ -13,7 +13,7 @@ permalink: /jcf
 
 ![ArrayList hierarchy](/assets/al.png)
 
-Внутри реализован обычным массивом.
+Внутри реализован НЕобычным массивом.
 
 
 

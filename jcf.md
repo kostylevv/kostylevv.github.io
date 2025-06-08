@@ -1,6 +1,8 @@
+---
 layout: page
 title: "Java Collections Framework"
 permalink: /jcf
+---
 
 # Иерархия
 

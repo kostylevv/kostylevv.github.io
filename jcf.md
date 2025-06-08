@@ -4,11 +4,11 @@ permalink: /jcf
 
 # Иерархия
 
-![[assets/hli.png]]
+![[/assets/hli.png]]
 
 ### ArrayList
 
-![[assets/al.png]]
+![[/assets/al.png]]
 
 Внутри реализован обычным массивом.
 

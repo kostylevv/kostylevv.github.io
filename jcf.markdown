@@ -13,8 +13,14 @@ permalink: /jcf
 
 ![ArrayList hierarchy](/assets/al.png)
 
-Внутри реализован НЕобычным массивом.
+Внутри реализован обычным массивом.
 
 
+### LinkedList
+
+![LinkedList hierarchy](/assets/ll.png)
+
+
+Реализует двусвязный список.
 
 

@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Личный учебник — Java & Алгоритмы</title>
+  <meta name="color-scheme" content="light dark" />
+  <style>
+   
+    :root {
+      --bg: #ffffff;
+      --surface: #f9fafb;       /* нейтральный фон панелей */
+      --text: #1b1f23;          /* почти-черный */
+      --muted: #4b5563;         /* slate-700 */
+      --accent: #1b4d8c;        /* "federal" blue vibe */
+      --accent-600: #154074;
+      --accent-contrast: #ffffff;
+      --border: #e5e7eb;        /* gray-200 */
+      --border-strong: #cbd5e1; /* gray-300 */
+      --radius: 10px;
+      --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+      --space-1: .5rem;
+      --space-2: 1rem;
+      --space-3: 1.5rem;
+      --space-4: 2rem;
+      --content-width: 980px;
+      --heading-tight: -0.01em;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --bg: #0c1220;
+        --surface: #0f172a;
+        --text: #e5e7eb;
+        --muted: #94a3b8;
+        --accent: #7aa6da;
+        --accent-600: #5f8fcb;
+        --accent-contrast: #0c1220;
+        --border: #1f2937;
+        --border-strong: #334155;
+        --shadow: none;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0c1220; --surface:#0f172a; --text:#e5e7eb; --muted:#94a3b8;
+      --accent:#7aa6da; --accent-600:#5f8fcb; --accent-contrast:#0c1220;
+      --border:#1f2937; --border-strong:#334155; --shadow:none;
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height:1.65}
+    a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+    a:hover{color:var(--accent-600)}
+
+    .header{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--border);
+      backdrop-filter:saturate(180%) blur(8px);
+      background: color-mix(in oklab, var(--bg) 88%, transparent);
+    }
+    .header .inner{display:flex;align-items:center;gap:var(--space-2);
+      max-width:var(--content-width);margin:0 auto;padding:.75rem var(--space-2)}
+    .brand{font-weight:800;letter-spacing:var(--heading-tight)}
+    .actions{display:flex;gap:.5rem}
+    .btn{border:1px solid var(--border-strong);background:var(--surface);color:inherit;
+      padding:.4rem .7rem;border-radius:8px;cursor:pointer}
+    .btn:hover{border-color:var(--accent-600)}
+
+    .layout{display:grid;grid-template-columns:300px 1fr;min-height:100svh}
+    .sidebar{position:sticky;top:3.25rem;align-self:start;height:calc(100svh - 3.25rem);
+      overflow:auto;border-right:1px solid var(--border);background:var(--surface);
+      padding:var(--space-2)}
+    .sidebar h2{margin:.25rem 0 var(--space-1);font-size:.95rem;text-transform:uppercase;
+      letter-spacing:.08em;color:var(--muted)}
+    .group{margin-bottom:var(--space-2)}
+    .nav{list-style:none;margin:0;padding:0}
+    .nav li{margin:.25rem 0}
+    .nav a{display:block;padding:.35rem .6rem;border-radius:8px;text-decoration:none}
+    .nav a:hover{background:color-mix(in oklab, var(--accent) 10%, var(--bg));}
+
+    .content{padding:var(--space-3) var(--space-2) var(--space-4)}
+    .prose{max-width:var(--content-width);margin:0 auto}
+    .prose h1{font-size:clamp(1.6rem,2.2vw + 1rem,2.4rem);margin:0 0 var(--space-2);
+      letter-spacing:var(--heading-tight)}
+    .prose h2,.prose h3{margin-top:var(--space-4);margin-bottom:.5rem}
+    .prose h2{font-size:1.3rem}
+    .prose h3{font-size:1.12rem}
+    .prose p{margin:.75rem 0}
+
+    .card{border:1px solid var(--border-strong);background:var(--bg);
+      border-radius:var(--radius);box-shadow:var(--shadow);padding:var(--space-2)}
+
+    .callout{border:1px solid var(--border-strong);border-left:6px solid var(--accent);
+      background:color-mix(in oklab, var(--accent) 8%, var(--bg));
+      padding:.75rem .9rem;border-radius:var(--radius)}
+
+    .prose pre{position:relative;background:#0b0e14; /* читабельный тёмный */
+      color:#eaeef3;border:1px solid var(--border-strong);padding:1rem;border-radius:var(--radius);
+      overflow:auto}
+    .prose code{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+    .copy-btn{position:absolute;top:8px;right:8px;font-size:.85rem;border:1px solid var(--border-strong);
+      background:var(--surface);padding:.25rem .5rem;border-radius:8px;cursor:pointer}
+
+    table{border-collapse:collapse;width:100%;margin:var(--space-2) 0}
+    th,td{border:1px solid var(--border-strong);padding:.5rem .6rem;text-align:left}
+    thead th{background:color-mix(in oklab, var(--accent) 10%, var(--bg))}
+
+    .footer{max-width:var(--content-width);margin:var(--space-4) auto 0;padding:var(--space-3) var(--space-2);
+      color:var(--muted);font-size:.9rem;border-top:1px solid var(--border)}
+
+    @media (max-width: 1024px){.layout{grid-template-columns:1fr}
+      .sidebar{position:relative;top:0;height:auto;border-right:none;border-bottom:1px solid var(--border)}}
+
+    @media print {.header,.sidebar,#themeToggle,#printBtn,.copy-btn{display:none!important}
+      .content{padding:0}.prose{max-width:none}}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="inner">
+      <div class="brand">Личный учебник</div>
+      <div style="flex:1"></div>
+      <div class="actions">
+        <button id="themeToggle" class="btn" title="Светлая/тёмная тема">🌓 Тема</button>
+        <button id="printBtn" class="btn" title="Печать">🖨️ Печать</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="group">
+        <h2>Java Core</h2>
+        <ul class="nav">
+          <li><a href="notes/java/iterators.html">Итераторы</a></li>
+          <li><a href="notes/java/gc-basics.html">GC — основы</a></li>
+        </ul>
+      </div>
+      <div class="group">
+        <h2>Algo & DS</h2>
+        <ul class="nav">
+          <li><a href="notes/algo/insertion-sort.html">Сортировка вставками</a></li>
+          <li><a href="notes/ds/hashmap-notes.html">HashMap — шпаргалка</a></li>
+        </ul>
+      </div>
+      <hr>
+      <small>Добавляй новые HTML‑файлы в папку <code>notes</code> и просто ссылку сюда. Группы — обычные блоки с заголовком и списком.</small>
+    </aside>
+
+    <main class="content">
+      <article class="prose" id="content">
+        <h1>Старт</h1>
+        <div class="card">
+          <p>Этот шаблон сделан в стиле, вдохновлённом USWDS: строгая типографика, понятная сетка, контрастная цветовая схема. Слева — группированный сайдбар (темы: <em>Java Core</em> и <em>Algo & DS</em>). Каждая заметка — отдельный HTML‑файл.</p>
+          <p>Рекомендация по структуре проекта:</p>
+          <pre><code>project/
+  index.html           ← эта страница (оглавление и описания)
+  notes/
+    java/
+      iterators.html   ← пример 1 (готов ниже)
+      gc-basics.html   ← пример 2 (готов ниже)
+    algo/
+      insertion-sort.html
+    ds/
+      hashmap-notes.html</code></pre>
+        </div>
+
+        <h2>Как добавить новую заметку</h2>
+        <ol>
+          <li>Создай файл в <code>notes/&lt;группа&gt;/&lt;имя&gt;.html</code>.</li>
+          <li>Добавь ссылку в соответствующий раздел сайдбара.</li>
+          <li>Поддерживай единый формат: «1 тема = 5 предложений + 1 пример кода».</li>
+        </ol>
+
+        <div class="callout"><strong>Подсказка:</strong> кнопка «Печать» делает чистую версию для PDF. Тема переключается и запоминается.</div>
+
+        <h2>Примеры файлов заметок</h2>
+        <p>Скопируй содержимое соответствующего блока в новый файл по указанному пути.</p>
+
+        <h3>1) <code>notes/java/iterators.html</code></h3>
+<pre><button class="copy-btn" aria-label="Скопировать">copy</button><code>&lt;!doctype html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"/&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"/&gt;
+  &lt;title&gt;Java Core — Итераторы&lt;/title&gt;
+  &lt;link rel="stylesheet" href="../shared.css"&gt; &lt;!-- опционально, см. ниже --&gt;
+&lt;/head&gt;
+&lt;body style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto; line-height:1.65; margin:2rem; max-width:900px"&gt;
+  &lt;h1 style="letter-spacing:-0.01em"&gt;Итераторы&lt;/h1&gt;
+  &lt;p&gt;&lt;code&gt;Iterable&lt;/code&gt; — базовый интерфейс коллекций; foreach использует &lt;code&gt;iterator()&lt;/code&gt;.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;code&gt;Iterator&lt;/code&gt;: &lt;code&gt;hasNext()&lt;/code&gt;, &lt;code&gt;next()&lt;/code&gt;, опциональный &lt;code&gt;remove()&lt;/code&gt;;&lt;/li&gt;
+    &lt;li&gt;&lt;code&gt;remove()&lt;/code&gt; может быть не поддержан — &lt;code&gt;UnsupportedOperationException&lt;/code&gt;;&lt;/li&gt;
+    &lt;li&gt;Модификация коллекции вне итератора =&gt; &lt;code&gt;ConcurrentModificationException&lt;/code&gt;.&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;pre style="background:#0b0e14;color:#eaeef3;padding:1rem;border-radius:10px;overflow:auto"&gt;&lt;code&gt;List&lt;String&gt; list = new ArrayList&lt;&gt;(List.of("a","b","c"));
+Iterator&lt;String&gt; it = list.iterator();
+while (it.hasNext()) {
+    String v = it.next();
+    if ("b".equals(v)) it.remove();
+}
+System.out.println(list); // [a, c]&lt;/code&gt;&lt;/pre&gt;
+  &lt;p&gt;&lt;a href="../../index.html"&gt;← Назад к оглавлению&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>2) <code>notes/java/gc-basics.html</code></h3>
+<pre><button class="copy-btn" aria-label="Скопировать">copy</button><code>&lt;!doctype html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"/&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"/&gt;
+  &lt;title&gt;Java Core — GC основы&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto; line-height:1.65; margin:2rem; max-width:900px"&gt;
+  &lt;h1 style="letter-spacing:-0.01em"&gt;GC — основы&lt;/h1&gt;
+  &lt;p&gt;Сборщик мусора управляет памятью: объекты без сильных ссылок подлежат сборке.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Поколения (young/old), паузы stop-the-world.&lt;/li&gt;
+    &lt;li&gt;Разные коллекторы: Serial, Parallel, CMS (устар.), G1, ZGC, Shenandoah.&lt;/li&gt;
+    &lt;li&gt;Профилируй: &lt;code&gt;jcmd&lt;/code&gt;, &lt;code&gt;jfr&lt;/code&gt;, метрики GC.&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;p&gt;&lt;a href="../../index.html"&gt;← Назад к оглавлению&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+        <h3>Опционально: общий CSS для заметок</h3>
+        <p>Если хочешь, вынеси минимальный общий стиль в <code>notes/shared.css</code> и подключай его во всех заметках.</p>
+<pre><button class="copy-btn" aria-label="Скопировать">copy</button><code>/* notes/shared.css */
+:root{color-scheme: light dark}
+body{background:Canvas;color:CanvasText}
+a{color:LinkText}
+pre{background:#0b0e14;color:#eaeef3;padding:1rem;border-radius:10px;overflow:auto}
+code{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+</code></pre>
+
+        <hr>
+        <p class="footer">Версия 0.2 — группированный сайдбар, пример отдельных заметок, стиль в духе USWDS.</p>
+      </article>
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('themeToggle');
+      const pref = localStorage.getItem('theme');
+      if (pref) document.documentElement.setAttribute('data-theme', pref);
+      btn?.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') ||
+          (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+      document.getElementById('printBtn')?.addEventListener('click', () => window.print());
+
+      document.querySelectorAll('pre .copy-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const code = btn.nextElementSibling?.innerText || '';
+          try { await navigator.clipboard.writeText(code);
+            const t = btn.textContent; btn.textContent='copied';
+            setTimeout(()=>btn.textContent=t,1200);
+          } catch(e){ alert('Не удалось скопировать'); }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

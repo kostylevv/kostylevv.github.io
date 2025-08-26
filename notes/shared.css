@@ -1,0 +1,6 @@
+/* notes/shared.css */
+:root{color-scheme: light dark}
+body{background:Canvas;color:CanvasText}
+a{color:LinkText}
+pre{background:#0b0e14;color:#eaeef3;padding:1rem;border-radius:10px;overflow:auto}
+code{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}

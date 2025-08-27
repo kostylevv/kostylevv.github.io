@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Test lifecycle annotations</title>
+  <link href="../shared.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto; line-height:1.65; margin:2rem; max-width:900px">
+  <h1 style="letter-spacing:-0.01em">Test lifecycle annotations in JUnit5</h1>
+  <ul>
+    <li>JUnit5 creates new instance of the test before exec each method (@TestInstance is set PER_METHOD by def)</li>
+	<li>To run all tests on same instance use @TestInstance(TestInstance.Lifecycle.PER_CLASS) </li>
+	<li>@BeforeAll, @AfterAll are static methods if PER_METHOD is used</li>
+    <li>@RepeatedTest allows to set how many times test should run</li>
+	<li>PER_METHOD lc: @BeforeAll -> Constructor -> @BeforeEach -> test -> @AfterEach -> Constructor -> next test or @AfterAll</li>
+	<li>PER_CLASS lc: Constructor -> @BeforeAll -> @BeforeEach -> test -> @AfterEach -> next test or @AfterAll</li>
+	
+  </ul>
+  <p><a href="../../index.html">← Назад к оглавлению</a></p>
+</body>
+</html>

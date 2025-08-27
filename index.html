@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Личный учебник — Java & Алгоритмы</title>
+  <title>My Java Book</title>
   <meta name="color-scheme" content="light dark" />
   <style>
    
@@ -118,11 +118,11 @@
 <body>
   <div class="header">
     <div class="inner">
-      <div class="brand">Личный учебник</div>
+      <div class="brand">My Java Book</div>
       <div style="flex:1"></div>
       <div class="actions">
-        <button id="themeToggle" class="btn" title="Светлая/тёмная тема">🌓 Тема</button>
-        <button id="printBtn" class="btn" title="Печать">🖨️ Печать</button>
+        <button id="themeToggle" class="btn" title="Light/Black mode">Theme</button>
+        <button id="printBtn" class="btn" title="print">Print</button>
       </div>
     </div>
   </div>
@@ -136,107 +136,25 @@
           <li><a href="notes/java/gc-basics.html">GC — основы</a></li>
         </ul>
       </div>
-      <div class="group">
-        <h2>Algo & DS</h2>
+     
+	  <h2>Junit</h2>
         <ul class="nav">
-          <li><a href="notes/algo/insertion-sort.html">Сортировка вставками</a></li>
-          <li><a href="notes/ds/hashmap-notes.html">HashMap — шпаргалка</a></li>
+          <li><a href="notes/junit/test-lc-anno.html">LC annotations</a></li>
         </ul>
       </div>
       <hr>
-      <small>Добавляй новые HTML‑файлы в папку <code>notes</code> и просто ссылку сюда. Группы — обычные блоки с заголовком и списком.</small>
     </aside>
 
     <main class="content">
       <article class="prose" id="content">
-        <h1>Старт</h1>
+        <h1>Start</h1>
         <div class="card">
-          <p>Этот шаблон сделан в стиле, вдохновлённом USWDS: строгая типографика, понятная сетка, контрастная цветовая схема. Слева — группированный сайдбар (темы: <em>Java Core</em> и <em>Algo & DS</em>). Каждая заметка — отдельный HTML‑файл.</p>
-          <p>Рекомендация по структуре проекта:</p>
-          <pre><code>project/
-  index.html           ← эта страница (оглавление и описания)
-  notes/
-    java/
-      iterators.html   ← пример 1 (готов ниже)
-      gc-basics.html   ← пример 2 (готов ниже)
-    algo/
-      insertion-sort.html
-    ds/
-      hashmap-notes.html</code></pre>
-        </div>
-
-        <h2>Как добавить новую заметку</h2>
-        <ol>
-          <li>Создай файл в <code>notes/&lt;группа&gt;/&lt;имя&gt;.html</code>.</li>
-          <li>Добавь ссылку в соответствующий раздел сайдбара.</li>
-          <li>Поддерживай единый формат: «1 тема = 5 предложений + 1 пример кода».</li>
-        </ol>
-
-        <div class="callout"><strong>Подсказка:</strong> кнопка «Печать» делает чистую версию для PDF. Тема переключается и запоминается.</div>
-
-        <h2>Примеры файлов заметок</h2>
-        <p>Скопируй содержимое соответствующего блока в новый файл по указанному пути.</p>
-
-        <h3>1) <code>notes/java/iterators.html</code></h3>
-<pre><button class="copy-btn" aria-label="Скопировать">copy</button><code>&lt;!doctype html&gt;
-&lt;html lang="ru"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"/&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1"/&gt;
-  &lt;title&gt;Java Core — Итераторы&lt;/title&gt;
-  &lt;link rel="stylesheet" href="../shared.css"&gt; &lt;!-- опционально, см. ниже --&gt;
-&lt;/head&gt;
-&lt;body style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto; line-height:1.65; margin:2rem; max-width:900px"&gt;
-  &lt;h1 style="letter-spacing:-0.01em"&gt;Итераторы&lt;/h1&gt;
-  &lt;p&gt;&lt;code&gt;Iterable&lt;/code&gt; — базовый интерфейс коллекций; foreach использует &lt;code&gt;iterator()&lt;/code&gt;.&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;code&gt;Iterator&lt;/code&gt;: &lt;code&gt;hasNext()&lt;/code&gt;, &lt;code&gt;next()&lt;/code&gt;, опциональный &lt;code&gt;remove()&lt;/code&gt;;&lt;/li&gt;
-    &lt;li&gt;&lt;code&gt;remove()&lt;/code&gt; может быть не поддержан — &lt;code&gt;UnsupportedOperationException&lt;/code&gt;;&lt;/li&gt;
-    &lt;li&gt;Модификация коллекции вне итератора =&gt; &lt;code&gt;ConcurrentModificationException&lt;/code&gt;.&lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;pre style="background:#0b0e14;color:#eaeef3;padding:1rem;border-radius:10px;overflow:auto"&gt;&lt;code&gt;List&lt;String&gt; list = new ArrayList&lt;&gt;(List.of("a","b","c"));
-Iterator&lt;String&gt; it = list.iterator();
-while (it.hasNext()) {
-    String v = it.next();
-    if ("b".equals(v)) it.remove();
-}
-System.out.println(list); // [a, c]&lt;/code&gt;&lt;/pre&gt;
-  &lt;p&gt;&lt;a href="../../index.html"&gt;← Назад к оглавлению&lt;/a&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-
-        <h3>2) <code>notes/java/gc-basics.html</code></h3>
-<pre><button class="copy-btn" aria-label="Скопировать">copy</button><code>&lt;!doctype html&gt;
-&lt;html lang="ru"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"/&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1"/&gt;
-  &lt;title&gt;Java Core — GC основы&lt;/title&gt;
-&lt;/head&gt;
-&lt;body style="font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto; line-height:1.65; margin:2rem; max-width:900px"&gt;
-  &lt;h1 style="letter-spacing:-0.01em"&gt;GC — основы&lt;/h1&gt;
-  &lt;p&gt;Сборщик мусора управляет памятью: объекты без сильных ссылок подлежат сборке.&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;Поколения (young/old), паузы stop-the-world.&lt;/li&gt;
-    &lt;li&gt;Разные коллекторы: Serial, Parallel, CMS (устар.), G1, ZGC, Shenandoah.&lt;/li&gt;
-    &lt;li&gt;Профилируй: &lt;code&gt;jcmd&lt;/code&gt;, &lt;code&gt;jfr&lt;/code&gt;, метрики GC.&lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;p&gt;&lt;a href="../../index.html"&gt;← Назад к оглавлению&lt;/a&gt;&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-
-        <h3>Опционально: общий CSS для заметок</h3>
-        <p>Если хочешь, вынеси минимальный общий стиль в <code>notes/shared.css</code> и подключай его во всех заметках.</p>
-<pre><button class="copy-btn" aria-label="Скопировать">copy</button><code>/* notes/shared.css */
-:root{color-scheme: light dark}
-body{background:Canvas;color:CanvasText}
-a{color:LinkText}
-pre{background:#0b0e14;color:#eaeef3;padding:1rem;border-radius:10px;overflow:auto}
-code{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
-</code></pre>
-
+          <p>Test</p>
+		  <ul>
+          <li>27.08.2025: Junit LC anno</li>
+        </ul>
         <hr>
-        <p class="footer">Версия 0.2 — группированный сайдбар, пример отдельных заметок, стиль в духе USWDS.</p>
+        <p class="footer">B0.2.</p>
       </article>
     </main>
   </div>
@@ -261,7 +179,7 @@ code{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mon
           try { await navigator.clipboard.writeText(code);
             const t = btn.textContent; btn.textContent='copied';
             setTimeout(()=>btn.textContent=t,1200);
-          } catch(e){ alert('Не удалось скопировать'); }
+          } catch(e){ alert('Unable to copy'); }
         });
       });
     })();
